@@ -1,34 +1,42 @@
 import React, { useState } from 'react';
 import { createRoot } from 'react-dom/client';
+
 const App = () => {
-  const [charXO, setCharXO] = useState('X');
+  const [charXO, setCharXO] = useState(['X']);
+
+  
 
   const handleSwitch = () => {
-    setInterval(function() {
-      if (charXO === 'X') {
-        return setCharXO('O');
-      }
-      else {
-        return setCharXO('X');
-      }
-    }, 300);
+    console.log(charXO);
+    if (charXO[0] === 'X') {
+      setCharXO(['O']);
+      return charXO;
+    }
+    else {
+      setCharXO(['X']);
+      return charXO;
+    }
   };
 
-  return(
+  const autoSwitch = setInterval(handleSwitch, 5000);
 
+  return(
     <div className='container'>
       <h1>Tic Tac Toe</h1>
       <Box 
+        prop={charXO}
+        //{autoSwitch}
         handleSwitch={handleSwitch}
       />
     </div>
   );
 };
 
-const Box = (props) => {
+const Box = (props) => { console.log('Props obj: ', props);
   return (
-    <button className='square' onClick={props.handleSwitch}>{props.handleSwitch}</button>
+    <button className='square' onClick={props.handleSwitch}>{props.prop}</button>
   );
 };
+
 const root = createRoot(document.querySelector('#root'));
 root.render(<App/>,);
