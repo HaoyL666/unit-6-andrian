@@ -5,3 +5,8 @@ body {
 .container {
   padding: 0 2.5%;
 }
+
+.square {
+  width: 100px;
+  height: 100px;
+}
