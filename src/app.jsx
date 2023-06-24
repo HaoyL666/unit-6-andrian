@@ -18,14 +18,14 @@ const App = () => {
     }
   };
 
-  const autoSwitch = setInterval(handleSwitch, 5000);
+  const autoSwitch = setInterval(handleSwitch, 3000);
+
 
   return(
     <div className='container'>
       <h1>Tic Tac Toe</h1>
       <Box 
         prop={charXO}
-        //{autoSwitch}
         handleSwitch={handleSwitch}
       />
     </div>
